@@ -11,10 +11,13 @@ client = discord.Client()
 #
 # @bot.command(name ='alive')
 
+general_chat = client.get_channel(545387429612224532)
+bot_control = client.get_channel(552272896056360960)
+raid = client.get_channel(635861501714104360)
+
 @client.event
 async def on_ready():
-    general_chat = client.get_channel(545387429612224532)
-    bot_control = client.get_channel(552272896056360960)
+
 
 
     print(f'{client.user.name} has connected to Discord!')
@@ -40,6 +43,9 @@ async def on_message(message):
     if message.content == '!O alive':
         response = standard_response;
         await message.channel.send(response)
+
+    if message.content == '!O Raid Team':
+        await raid.send("NAMES")
 
     if message.content.find("bread") != -1 or message.content.find("Bread") != -1 or message.content.find(":bread:") != -1:
         await message.channel.send('Indeed, the bread must be gotten {0.author.mention}'.format(message))
